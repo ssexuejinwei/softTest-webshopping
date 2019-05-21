@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by 14437 on 2017/3/3.
- */
 @Service
 public class ShoppingCarServiceImplement implements ShoppingCarService {
     @Autowired

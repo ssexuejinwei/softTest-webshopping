@@ -3,7 +3,6 @@ package com.shopping.utils;
 /**
  * Created by IcedSoul on 2018/4/8.
  */
-
 public class Response {
     public int status;
     public String message;
