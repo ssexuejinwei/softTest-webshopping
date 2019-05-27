@@ -15,10 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 * ProductController Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>五月 28, 2019</pre> 
+* @since <pre>���� 28, 2019</pre> 
 * @version 1.0 
 */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 //配置事务的回滚,对数据库的增删改都会回滚,便于测试用例的循环利用
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)

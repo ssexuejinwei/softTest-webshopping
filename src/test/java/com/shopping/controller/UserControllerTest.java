@@ -16,16 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
-
-import static org.junit.Assert.assertEquals;
 
 /** 
 * UserController Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>���� 27, 2019</pre> 
+* @since <pre>���� 28, 2019</pre> 
 * @version 1.0 
 */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,7 +33,7 @@ import static org.junit.Assert.assertEquals;
 @WebAppConfiguration
 @ContextConfiguration(locations={"classpath:spring/applicationContext.xml"})
 public class UserControllerTest { 
-    @Autowired
+@Autowired
     private UserController userController;
 @Before
 public void before() throws Exception { 
@@ -95,6 +92,7 @@ public void after() throws Exception {
 //    assertEquals(1,1);
     }
     /**
+/** 
 * 
 * Method: register() 
 * 
@@ -213,7 +211,6 @@ public void testGetUserAddressAndPhoneNumber() throws Exception {
 public void testDoLogout() throws Exception { 
 //TODO: Test goes here... 
 } 
-
 
 
 /** 

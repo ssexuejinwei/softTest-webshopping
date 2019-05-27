@@ -1,7 +1,6 @@
 package com.shopping.service;
 
-import com.shopping.entity.ShoppingRecord;
-import org.junit.Test;
+import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After;
 import org.junit.runner.RunWith;
@@ -16,14 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 * ShoppingCarServiceImplement Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>ÎåÔÂ 28, 2019</pre> 
+* @since <pre>ï¿½ï¿½ï¿½ï¿½ 28, 2019</pre> 
 * @version 1.0 
 */
 @RunWith(SpringJUnit4ClassRunner.class)
-//ÅäÖÃÊÂÎñµÄ»Ø¹ö,¶ÔÊı¾İ¿âµÄÔöÉ¾¸Ä¶¼»á»Ø¹ö,±ãÓÚ²âÊÔÓÃÀıµÄÑ­»·ÀûÓÃ
+//é…ç½®äº‹åŠ¡çš„å›æ»š,å¯¹æ•°æ®åº“çš„å¢åˆ æ”¹éƒ½ä¼šå›æ»š,ä¾¿äºæµ‹è¯•ç”¨ä¾‹çš„å¾ªç¯åˆ©ç”¨
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
-//²âÊÔµÄÊ±ºò¼ÓÔØ·şÎñÆ÷
+//æµ‹è¯•çš„æ—¶å€™åŠ è½½æœåŠ¡å™¨
 @WebAppConfiguration
 @ContextConfiguration(locations={"classpath:spring/applicationContext.xml"})
 public class ShoppingCarServiceImplementTest { 
