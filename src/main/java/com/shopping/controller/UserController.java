@@ -7,6 +7,7 @@ import com.shopping.entity.UserDetail;
 import com.shopping.service.UserDetailService;
 import com.shopping.service.UserService;
 import com.shopping.utils.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.transaction.annotation.Transactional;

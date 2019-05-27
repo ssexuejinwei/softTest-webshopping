@@ -3,7 +3,6 @@ package com.shopping.dao;
 import com.shopping.entity.Product;
 
 import java.util.List;
-
 public interface ProductDao {
     public Product getProduct(int id);
 
