@@ -5,11 +5,11 @@ import com.shopping.entity.ShoppingRecord;
 import java.util.List;
 
 public interface ShoppingRecordService {
-    public ShoppingRecord getShoppingRecord(int userId, int productId,String time);
+    public ShoppingRecord getShoppingRecord(int userId, int productId, String time);
 
     public void addShoppingRecord(ShoppingRecord shoppingRecord);
 
-    public boolean deleteShoppingRecord(int userId,int productId);
+    public boolean deleteShoppingRecord(int userId, int productId);
 
     public boolean updateShoppingRecord(ShoppingRecord shoppingRecord);
 
@@ -19,5 +19,5 @@ public interface ShoppingRecordService {
 
     public List<ShoppingRecord> getAllShoppingRecords();
 
-    public boolean getUserProductRecord(int userId,int productId);
+    public boolean getUserProductRecord(int userId, int productId);
 }

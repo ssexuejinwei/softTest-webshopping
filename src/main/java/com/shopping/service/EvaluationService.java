@@ -3,12 +3,13 @@ package com.shopping.service;
 import com.shopping.entity.Evaluation;
 
 import java.util.List;
+
 public interface EvaluationService {
     public Evaluation getEvaluation(int userId, int productId, String time);
 
     public void addEvaluation(Evaluation evaluation);
 
-    public boolean deleteEvaluation(int userId,int productId,String time);
+    public boolean deleteEvaluation(int userId, int productId, String time);
 
     public boolean updateEvaluation(Evaluation evaluation);
 

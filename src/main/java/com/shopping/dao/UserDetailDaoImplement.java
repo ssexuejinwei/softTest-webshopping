@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Repository
-public class UserDetailDaoImplement implements UserDetailDao{
+public class UserDetailDaoImplement implements UserDetailDao {
 
     @Resource
     private SessionFactory sessionFactory;
@@ -19,7 +19,7 @@ public class UserDetailDaoImplement implements UserDetailDao{
         String hql = "from UserDetail where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
-        return (UserDetail)query.uniqueResult();
+        return (UserDetail) query.uniqueResult();
     }
 
     @Override
@@ -39,13 +39,13 @@ public class UserDetailDaoImplement implements UserDetailDao{
     public boolean updateUserDetail(UserDetail userDetail) {
         String hql = "update UserDetail set password=?,phoneNumber=?,sex=?,birthday=?,postNumber=?,address=? where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setParameter(0,userDetail.getPassword());
-        query.setParameter(1,userDetail.getPhoneNumber());
-        query.setParameter(2,userDetail.getSex());
-        query.setParameter(3,userDetail.getBirthday());
-        query.setParameter(4,userDetail.getPostNumber());
-        query.setParameter(5,userDetail.getAddress());
-        query.setParameter(6,userDetail.getId());
+        query.setParameter(0, userDetail.getPassword());
+        query.setParameter(1, userDetail.getPhoneNumber());
+        query.setParameter(2, userDetail.getSex());
+        query.setParameter(3, userDetail.getBirthday());
+        query.setParameter(4, userDetail.getPostNumber());
+        query.setParameter(5, userDetail.getAddress());
+        query.setParameter(6, userDetail.getId());
         return query.executeUpdate() > 0;
     }
 

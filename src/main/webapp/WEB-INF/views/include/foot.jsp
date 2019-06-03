@@ -19,14 +19,14 @@
     <![endif]-->
 </head>
 <body>
-    <!-- 尾部 -->
-    <hr/>
-    <div class="foot-style">
-        本项目采用了Spring+SpringMVC+Hibernate开发框架，前端使用了Bootstrap开发框架
-        <br/>
-        数据库使用了MySQL
-    </div>
-    <!-- 结束啦 -->
+<!-- 尾部 -->
+<hr/>
+<div class="foot-style">
+    本项目采用了Spring+SpringMVC+Hibernate开发框架，前端使用了Bootstrap开发框架
+    <br/>
+    数据库使用了MySQL
+</div>
+<!-- 结束啦 -->
 
 </body>
 </html>

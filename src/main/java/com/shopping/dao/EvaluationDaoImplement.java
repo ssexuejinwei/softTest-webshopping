@@ -56,7 +56,7 @@ public class EvaluationDaoImplement implements EvaluationDao {
         String hql = "from Evaluation where productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, productId);
-        return  query.list();
+        return query.list();
     }
 
     @Override

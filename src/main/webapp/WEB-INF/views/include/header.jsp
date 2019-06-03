@@ -25,7 +25,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -46,7 +47,8 @@
                         <li><a href="${cp}/control" methods="post">控制台</a></li>
                     </c:if>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
                                 ${currentUser.nickName}
                             <span class="caret"></span>
                         </a>
@@ -79,19 +81,19 @@
         search.searchKeyWord = document.getElementById("searchKeyWord").value;
         var searchResult = "";
         $.ajax({
-            async : false,
-            type : 'POST',
-            url : '${cp}/searchPre',
-            data : search,
-            dataType : 'json',
-            success : function(result) {
+            async: false,
+            type: 'POST',
+            url: '${cp}/searchPre',
+            data: search,
+            dataType: 'json',
+            success: function (result) {
                 searchResult = result.result;
             },
-            error : function(result) {
+            error: function (result) {
                 layer.alert('查询错误');
             }
         });
-        if(searchResult == "success")
+        if (searchResult == "success")
             window.location.href = "${cp}/search";
     }
 </script>

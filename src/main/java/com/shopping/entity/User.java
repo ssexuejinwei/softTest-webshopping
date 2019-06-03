@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="user_main")
+@Table(name = "user_main")
 public class User {
 
     private int id;
@@ -19,7 +19,7 @@ public class User {
     @GenericGenerator(name = "generator", strategy = "increment") //设置主键自增
     @GeneratedValue(generator = "generator")
 
-    @Column(name="id")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -28,7 +28,7 @@ public class User {
         this.id = id;
     }
 
-    @Column(name="name")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -37,7 +37,7 @@ public class User {
         this.name = name;
     }
 
-    @Column(name="email")
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -46,7 +46,7 @@ public class User {
         this.email = email;
     }
 
-    @Column(name="nick_name")
+    @Column(name = "nick_name")
     public String getNickName() {
         return nickName;
     }
@@ -56,7 +56,7 @@ public class User {
         this.nickName = nickName;
     }
 
-    @Column(name="role")
+    @Column(name = "role")
     public int getRole() {
         return role;
     }

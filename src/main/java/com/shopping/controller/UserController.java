@@ -149,8 +149,8 @@ public class UserController {
         userList = userService.getAllUser();
         String allUsers = JSONArray.toJSONString(userList);
 //        System.out.println("我返回的结果是"+allUsers);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("allUsers",allUsers);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("allUsers", allUsers);
         return resultMap;
     }
 
@@ -166,15 +166,15 @@ public class UserController {
     public Map<String, Object> getUserAddressAndPhoneNumber(int id) {
         String address = userDetailService.getUserDetail(id).getAddress();
         String phoneNumber = userDetailService.getUserDetail(id).getPhoneNumber();
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("address",address);
-        resultMap.put("phoneNumber",phoneNumber);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("address", address);
+        resultMap.put("phoneNumber", phoneNumber);
         return resultMap;
     }
 
     @RequestMapping(value = "/doLogout")
-    public String doLogout(HttpSession httpSession){
-        httpSession.setAttribute("currentUser","");
+    public String doLogout(HttpSession httpSession) {
+        httpSession.setAttribute("currentUser", "");
         return "redirect:login";
     }
 
@@ -183,8 +183,8 @@ public class UserController {
     public Map<String, Object> getUserById(int id) {
         User user = userService.getUser(id);
         String result = JSON.toJSONString(user);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",result);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", result);
         return resultMap;
     }
 
@@ -193,8 +193,8 @@ public class UserController {
     public Map<String, Object> getUserDetailById(int id) {
         UserDetail userDetail = userDetailService.getUserDetail(id);
         String result = JSON.toJSONString(userDetail);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",result);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", result);
         return resultMap;
     }
 

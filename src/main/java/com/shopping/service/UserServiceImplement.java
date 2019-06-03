@@ -51,7 +51,7 @@ public class UserServiceImplement implements UserService {
             userDetailDao.deleteUserDetail(id);
             userDao.deleteUser(id);
             return new Response(1, "删除成功", null);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return new Response(0, "删除失败", null);
         }
     }

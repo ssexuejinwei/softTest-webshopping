@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name="products")
+@Table(name = "products")
 public class Product {
     private int id;
     private String name;
@@ -19,7 +19,7 @@ public class Product {
     @GenericGenerator(name = "generator", strategy = "increment") //设置主键自增
     @GeneratedValue(generator = "generator")
 
-    @Column(name="id")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -28,7 +28,7 @@ public class Product {
         this.id = id;
     }
 
-    @Column(name="name")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -37,7 +37,7 @@ public class Product {
         this.name = name;
     }
 
-    @Column(name="description")
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -46,7 +46,7 @@ public class Product {
         this.description = description;
     }
 
-    @Column(name="key_word")
+    @Column(name = "key_word")
     public String getKeyWord() {
         return keyWord;
     }
@@ -55,7 +55,7 @@ public class Product {
         this.keyWord = keyWord;
     }
 
-    @Column(name="price")
+    @Column(name = "price")
     public int getPrice() {
         return price;
     }
@@ -64,7 +64,7 @@ public class Product {
         this.price = price;
     }
 
-    @Column(name="counts")
+    @Column(name = "counts")
     public int getCounts() {
         return counts;
     }
@@ -73,7 +73,7 @@ public class Product {
         this.counts = counts;
     }
 
-    @Column(name="type")
+    @Column(name = "type")
     public int getType() {
         return type;
     }

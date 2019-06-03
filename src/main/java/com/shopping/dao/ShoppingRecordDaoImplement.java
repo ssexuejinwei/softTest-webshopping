@@ -15,7 +15,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public ShoppingRecord getShoppingRecord(int userId, int productId,String time) {
+    public ShoppingRecord getShoppingRecord(int userId, int productId, String time) {
         String hql = "from ShoppingRecord where userId=? and productId=? and time=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, userId);
@@ -41,7 +41,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
     @Override
     public boolean updateShoppingRecord(ShoppingRecord shoppingRecord) {
         String hql = "update ShoppingReocrd set orderStatus=? where userId=? and productId=? and time=?";
-        String sql = "update shopping_record set order_status="+shoppingRecord.getOrderStatus()+" where user_id="+shoppingRecord.getUserId()+" and product_id="+shoppingRecord.getProductId()+" and time='"+shoppingRecord.getTime()+"'";
+        String sql = "update shopping_record set order_status=" + shoppingRecord.getOrderStatus() + " where user_id=" + shoppingRecord.getUserId() + " and product_id=" + shoppingRecord.getProductId() + " and time='" + shoppingRecord.getTime() + "'";
 //        Query query = sessionFactory.getCurrentSession().createQuery(hql);
 //        query.setParameter(0,shoppingRecord.getOrderStatus());
 //        query.setParameter(1,shoppingRecord.getUserId());
@@ -55,7 +55,7 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
     public List<ShoppingRecord> getShoppingRecords(int userId) {
         String hql = "from ShoppingRecord where userId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setParameter(0,userId);
+        query.setParameter(0, userId);
         return query.list();
     }
 
@@ -70,17 +70,17 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
     public List<ShoppingRecord> getShoppingRecordsByOrderStatus(int orderStatus) {
         String hql = "from ShoppingRecord where orderStatus=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setParameter(0,orderStatus);
+        query.setParameter(0, orderStatus);
         return query.list();
     }
 
     @Override
-    public boolean getUserProductRecord(int userId,int productId) {
+    public boolean getUserProductRecord(int userId, int productId) {
         String hql = "from ShoppingRecord where userId=? and productId=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setParameter(0,userId);
-        query.setParameter(1,productId);
-        return query.list().size()>0;
+        query.setParameter(0, userId);
+        query.setParameter(1, productId);
+        return query.list().size() > 0;
     }
 
     @Override

@@ -31,12 +31,12 @@ public class ProductController {
 
     @RequestMapping(value = "/getAllProducts")
     @ResponseBody
-    public Map<String,Object> getAllProducts(){
+    public Map<String, Object> getAllProducts() {
         List<Product> productList = new ArrayList<>();
         productList = productService.getAllProduct();
         String allProducts = JSONArray.toJSONString(productList);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("allProducts",allProducts);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("allProducts", allProducts);
         return resultMap;
     }
 
@@ -49,9 +49,9 @@ public class ProductController {
 
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> addProduct(String name,String description,String keyWord,int price,int counts,int type) {
-        System.out.println("添加了商品："+name);
-        String result ="fail";
+    public Map<String, Object> addProduct(String name, String description, String keyWord, int price, int counts, int type) {
+        System.out.println("添加了商品：" + name);
+        String result = "fail";
         Product product = new Product();
         product.setName(name);
         product.setDescription(description);
@@ -61,20 +61,20 @@ public class ProductController {
         product.setType(type);
         productService.addProduct(product);
         result = "success";
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",result);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", result);
         return resultMap;
     }
 
     @RequestMapping(value = "/productDetail", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> productDetail(int id, HttpSession httpSession) {
-        System.out.println("I am here!"+id);
+        System.out.println("I am here!" + id);
         Product product = productService.getProduct(id);
-        httpSession.setAttribute("productDetail",product);
-        System.out.print("I am here"+product.getName());
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result","success");
+        httpSession.setAttribute("productDetail", product);
+        System.out.print("I am here" + product.getName());
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", "success");
         return resultMap;
     }
 
@@ -85,10 +85,10 @@ public class ProductController {
 
     @RequestMapping(value = "/searchPre", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> searchPre(String searchKeyWord,HttpSession httpSession) {
-        httpSession.setAttribute("searchKeyWord",searchKeyWord);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result","success");
+    public Map<String, Object> searchPre(String searchKeyWord, HttpSession httpSession) {
+        httpSession.setAttribute("searchKeyWord", searchKeyWord);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", "success");
         return resultMap;
     }
 
@@ -99,14 +99,14 @@ public class ProductController {
 
     @RequestMapping(value = "/searchProduct", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> searchProduct(String searchKeyWord){
-        System.out.println("我到了SearchProduct"+searchKeyWord);
+    public Map<String, Object> searchProduct(String searchKeyWord) {
+        System.out.println("我到了SearchProduct" + searchKeyWord);
         List<Product> productList = new ArrayList<Product>();
         productList = productService.getProductsByKeyWord(searchKeyWord);
         String searchResult = JSONArray.toJSONString(productList);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",searchResult);
-        System.out.println("我返回了"+searchResult);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", searchResult);
+        System.out.println("我返回了" + searchResult);
         return resultMap;
     }
 
@@ -115,34 +115,34 @@ public class ProductController {
     public Map<String, Object> getProductById(int id) {
         Product product = productService.getProduct(id);
         String result = JSON.toJSONString(product);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",result);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", result);
         return resultMap;
     }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> uploadFile(@RequestParam MultipartFile productImgUpload,String name, HttpServletRequest request) {
+    public Map<String, Object> uploadFile(@RequestParam MultipartFile productImgUpload, String name, HttpServletRequest request) {
         String result = "fail";
-        try{
-            if(productImgUpload != null && !productImgUpload.isEmpty()) {
+        try {
+            if (productImgUpload != null && !productImgUpload.isEmpty()) {
                 String fileRealPath = request.getSession().getServletContext().getRealPath("/static/img");
                 int id = productService.getProduct(name).getId();
-                String fileName = String.valueOf(id)+".jpg";
+                String fileName = String.valueOf(id) + ".jpg";
                 File fileFolder = new File(fileRealPath);
-                System.out.println("fileRealPath=" + fileRealPath+"/"+fileName);
-                if(!fileFolder.exists()){
+                System.out.println("fileRealPath=" + fileRealPath + "/" + fileName);
+                if (!fileFolder.exists()) {
                     fileFolder.mkdirs();
                 }
-                File file = new File(fileFolder,fileName);
+                File file = new File(fileFolder, fileName);
                 productImgUpload.transferTo(file);
                 result = "success";
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",result);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", result);
         return resultMap;
     }
 }

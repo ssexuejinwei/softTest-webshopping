@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,12 +24,12 @@ public class EvaluationController {
     @Resource
     private ShoppingRecordService shoppingRecordService;
 
-    @RequestMapping(value = "/addShoppingEvaluation",method = RequestMethod.POST)
+    @RequestMapping(value = "/addShoppingEvaluation", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> addShoppingEvaluation(int userId, int productId, String content){
-        System.out.println("我添加了"+userId+" "+productId);
+    public Map<String, Object> addShoppingEvaluation(int userId, int productId, String content) {
+        System.out.println("我添加了" + userId + " " + productId);
         String result = null;
-        if(shoppingRecordService.getUserProductRecord(userId,productId)){
+        if (shoppingRecordService.getUserProductRecord(userId, productId)) {
             Evaluation evaluation = new Evaluation();
             evaluation.setUserId(userId);
             evaluation.setProductId(productId);
@@ -38,23 +39,22 @@ public class EvaluationController {
             evaluation.setContent(content);
             evaluationService.addEvaluation(evaluation);
             result = "success";
-        }
-        else{
-            result="noneRecord";
+        } else {
+            result = "noneRecord";
         }
 
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",result);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", result);
         return resultMap;
     }
 
-    @RequestMapping(value = "/getShoppingEvaluations",method = RequestMethod.POST)
+    @RequestMapping(value = "/getShoppingEvaluations", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> getShoppingEvaluations(int productId){
+    public Map<String, Object> getShoppingEvaluations(int productId) {
         List<Evaluation> evaluationList = evaluationService.getProductEvaluation(productId);
         String evaluations = JSONArray.toJSONString(evaluationList);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("result",evaluations);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("result", evaluations);
         return resultMap;
     }
 }

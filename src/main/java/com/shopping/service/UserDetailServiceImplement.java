@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserDetailServiceImplement implements UserDetailService{
+public class UserDetailServiceImplement implements UserDetailService {
 
     @Autowired
     private UserDetailDao userDetailDao;

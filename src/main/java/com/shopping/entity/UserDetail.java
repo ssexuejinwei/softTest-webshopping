@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user_detail")
+@Table(name = "user_detail")
 public class UserDetail {
     private int id;
     private String password;
@@ -20,7 +20,7 @@ public class UserDetail {
     @GenericGenerator(name = "generator", strategy = "assigned")
     @GeneratedValue(generator = "generator")
 
-    @Column(name="id")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -29,7 +29,7 @@ public class UserDetail {
         this.id = id;
     }
 
-    @Column(name="password")
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -37,7 +37,8 @@ public class UserDetail {
     public void setPassword(String password) {
         this.password = password;
     }
-    @Column(name="phone_number")
+
+    @Column(name = "phone_number")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -46,7 +47,7 @@ public class UserDetail {
         this.phoneNumber = phoneNumber;
     }
 
-    @Column(name="sex")
+    @Column(name = "sex")
     public int getSex() {
         return sex;
     }
@@ -55,7 +56,7 @@ public class UserDetail {
         this.sex = sex;
     }
 
-    @Column(name="birthday")
+    @Column(name = "birthday")
     public String getBirthday() {
         return birthday;
     }
@@ -64,7 +65,7 @@ public class UserDetail {
         this.birthday = birthday;
     }
 
-    @Column(name="post_number")
+    @Column(name = "post_number")
     public String getPostNumber() {
         return postNumber;
     }
@@ -73,7 +74,7 @@ public class UserDetail {
         this.postNumber = postNumber;
     }
 
-    @Column(name="address")
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -82,7 +83,7 @@ public class UserDetail {
         this.address = address;
     }
 
-    @Column(name="register_time")
+    @Column(name = "register_time")
     public String getRegisterTime() {
         return registerTime;
     }

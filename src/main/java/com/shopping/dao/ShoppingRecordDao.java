@@ -5,11 +5,11 @@ import com.shopping.entity.ShoppingRecord;
 import java.util.List;
 
 public interface ShoppingRecordDao {
-    ShoppingRecord getShoppingRecord(int userId, int productId,String time);
+    ShoppingRecord getShoppingRecord(int userId, int productId, String time);
 
     void addShoppingRecord(ShoppingRecord shoppingRecord);
 
-    boolean deleteShoppingRecord(int userId,int productId);
+    boolean deleteShoppingRecord(int userId, int productId);
 
     boolean updateShoppingRecord(ShoppingRecord shoppingRecord);
 
@@ -19,7 +19,7 @@ public interface ShoppingRecordDao {
 
     List<ShoppingRecord> getShoppingRecordsByOrderStatus(int orderStatus);
 
-    boolean getUserProductRecord(int userId,int productId);
+    boolean getUserProductRecord(int userId, int productId);
 
     boolean deleteShoppingRecordByUser(int userId);
 

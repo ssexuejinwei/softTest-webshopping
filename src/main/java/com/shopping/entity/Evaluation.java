@@ -3,8 +3,8 @@ package com.shopping.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="evaluation")
-@IdClass(value=ShoppingRecordPriKey.class)
+@Table(name = "evaluation")
+@IdClass(value = ShoppingRecordPriKey.class)
 public class Evaluation {
     private int userId;
     private int productId;
@@ -12,7 +12,7 @@ public class Evaluation {
     private String content;
 
     @Id
-    @Column(name="user_id")
+    @Column(name = "user_id")
     public int getUserId() {
         return userId;
     }
@@ -22,7 +22,7 @@ public class Evaluation {
     }
 
     @Id
-    @Column(name="product_id")
+    @Column(name = "product_id")
     public int getProductId() {
         return productId;
     }
@@ -32,7 +32,7 @@ public class Evaluation {
     }
 
     @Id
-    @Column(name="time")
+    @Column(name = "time")
     public String getTime() {
         return time;
     }
@@ -41,7 +41,7 @@ public class Evaluation {
         this.time = time;
     }
 
-    @Column(name="content")
+    @Column(name = "content")
     public String getContent() {
         return content;
     }

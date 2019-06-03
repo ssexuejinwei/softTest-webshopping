@@ -6,11 +6,11 @@ import com.sun.org.apache.xml.internal.serialize.LineSeparator;
 import java.util.List;
 
 public interface EvaluationDao {
-    public Evaluation getEvaluation(int userId,int productId,String time);
+    public Evaluation getEvaluation(int userId, int productId, String time);
 
     public void addEvaluation(Evaluation evaluation);
 
-    public boolean deleteEvaluation(int userId,int productId,String time);
+    public boolean deleteEvaluation(int userId, int productId, String time);
 
     public boolean updateEvaluation(Evaluation evaluation);
 

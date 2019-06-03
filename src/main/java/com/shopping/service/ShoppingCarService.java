@@ -9,7 +9,7 @@ public interface ShoppingCarService {
 
     public void addShoppingCar(ShoppingCar shoppingCar);
 
-    public boolean deleteShoppingCar(int userId,int productId);
+    public boolean deleteShoppingCar(int userId, int productId);
 
     public boolean updateShoppingCar(ShoppingCar shoppingCar);
 

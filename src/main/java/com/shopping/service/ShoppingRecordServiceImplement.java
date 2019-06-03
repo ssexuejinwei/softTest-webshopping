@@ -4,15 +4,17 @@ import com.shopping.dao.ShoppingRecordDao;
 import com.shopping.entity.ShoppingRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class ShoppingRecordServiceImplement implements ShoppingRecordService {
     @Autowired
     private ShoppingRecordDao shoppingRecordDao;
+
     @Override
-    public ShoppingRecord getShoppingRecord(int userId, int productId,String time) {
-        return shoppingRecordDao.getShoppingRecord(userId,productId,time);
+    public ShoppingRecord getShoppingRecord(int userId, int productId, String time) {
+        return shoppingRecordDao.getShoppingRecord(userId, productId, time);
     }
 
     @Override
@@ -22,7 +24,7 @@ public class ShoppingRecordServiceImplement implements ShoppingRecordService {
 
     @Override
     public boolean deleteShoppingRecord(int userId, int productId) {
-        return shoppingRecordDao.deleteShoppingRecord(userId,productId);
+        return shoppingRecordDao.deleteShoppingRecord(userId, productId);
     }
 
     @Override
@@ -46,7 +48,7 @@ public class ShoppingRecordServiceImplement implements ShoppingRecordService {
     }
 
     @Override
-    public boolean getUserProductRecord(int userId,int productId) {
-        return shoppingRecordDao.getUserProductRecord(userId,productId);
+    public boolean getUserProductRecord(int userId, int productId) {
+        return shoppingRecordDao.getUserProductRecord(userId, productId);
     }
 }
