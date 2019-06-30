@@ -28,7 +28,7 @@ public class EvaluationController {
     @ResponseBody
     public Map<String, Object> addShoppingEvaluation(int userId, int productId, String content) {
         System.out.println("我添加了" + userId + " " + productId);
-        String result = null;
+        String result = "null";
         if (shoppingRecordService.getUserProductRecord(userId, productId)) {
             Evaluation evaluation = new Evaluation();
             evaluation.setUserId(userId);

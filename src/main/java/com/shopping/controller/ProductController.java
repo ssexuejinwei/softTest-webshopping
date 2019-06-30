@@ -50,7 +50,7 @@ public class ProductController {
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> addProduct(String name, String description, String keyWord, int price, int counts, int type) {
-        System.out.println("添加了商品：" + name);
+//        System.out.println("添加了商品：" + name);
         String result = "fail";
         Product product = new Product();
         product.setName(name);
@@ -69,10 +69,10 @@ public class ProductController {
     @RequestMapping(value = "/productDetail", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> productDetail(int id, HttpSession httpSession) {
-        System.out.println("I am here!" + id);
+//        System.out.println("I am here!" + id);
         Product product = productService.getProduct(id);
         httpSession.setAttribute("productDetail", product);
-        System.out.print("I am here" + product.getName());
+//        System.out.print("I am here" + product.getName());
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("result", "success");
         return resultMap;
@@ -89,6 +89,7 @@ public class ProductController {
         httpSession.setAttribute("searchKeyWord", searchKeyWord);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("result", "success");
+        resultMap.put("searchKeyWord", searchKeyWord);
         return resultMap;
     }
 
@@ -100,13 +101,13 @@ public class ProductController {
     @RequestMapping(value = "/searchProduct", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> searchProduct(String searchKeyWord) {
-        System.out.println("我到了SearchProduct" + searchKeyWord);
+//        System.out.println("我到了SearchProduct" + searchKeyWord);
         List<Product> productList = new ArrayList<Product>();
         productList = productService.getProductsByKeyWord(searchKeyWord);
         String searchResult = JSONArray.toJSONString(productList);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("result", searchResult);
-        System.out.println("我返回了" + searchResult);
+//        System.out.println("我返回了" + searchResult);
         return resultMap;
     }
 

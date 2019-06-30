@@ -58,7 +58,7 @@ public class UserController {
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> doLogin(String userNameOrEmail, String password, HttpSession httpSession) {
-        System.out.println("我接收到了登录请求" + userNameOrEmail + " " + password);
+//        System.out.println("我接收到了登录请求" + userNameOrEmail + " " + password);
         String result = "fail";
         User user = userService.getUser(userNameOrEmail);
         if (user == null)

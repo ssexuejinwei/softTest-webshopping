@@ -37,8 +37,8 @@ public class ShoppingRecordController {
     @RequestMapping(value = "/addShoppingRecord", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> addShoppingRecord(int userId, int productId, int counts) {
-        System.out.println("我添加了" + userId + " " + productId);
-        String result = null;
+//        System.out.println("我添加了" + userId + " " + productId);
+        String result = "null";
         Product product = productService.getProduct(productId);
         if (counts <= product.getCounts()) {
             ShoppingRecord shoppingRecord = new ShoppingRecord();
@@ -65,15 +65,15 @@ public class ShoppingRecordController {
     @RequestMapping(value = "/changeShoppingRecord", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> changeShoppingRecord(int userId, int productId, String time, int orderStatus) {
-        System.out.println("我接收了" + userId + " " + productId + " " + time + " " + orderStatus);
+//        System.out.println("我接收了" + userId + " " + productId + " " + time + " " + orderStatus);
         ShoppingRecord shoppingRecord = shoppingRecordService.getShoppingRecord(userId, productId, time);
-        System.out.println("我获取到了了" + shoppingRecord.getTime());
+//        System.out.println("我获取到了了" + shoppingRecord.getTime());
         shoppingRecord.setOrderStatus(orderStatus);
         shoppingRecordService.updateShoppingRecord(shoppingRecord);
 
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("result", "success");
-        System.out.println("我成功fanhui了");
+//        System.out.println("我成功fanhui了");
         return resultMap;
     }
 
