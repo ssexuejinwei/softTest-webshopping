@@ -91,45 +91,45 @@ public void testGetUserDetail() throws Exception {
     }
 } 
 
-/** 
-* 
-* Method: addUserDetail(UserDetail userDetail) 
-* 
-*/ 
-@Test
-public void testAddUserDetail() throws Exception { 
-//TODO: Test goes here... 
-} 
+///**
+//*
+//* Method: addUserDetail(UserDetail userDetail)
+//*
+//*/
+//@Test
+//public void testAddUserDetail() throws Exception {
+////TODO: Test goes here...
+//}
+//
+///**
+//*
+//* Method: deleteUserDetail(int id)
+//*
+//*/
+//@Test
+//public void testDeleteUserDetail() throws Exception {
+////TODO: Test goes here...
+//}
 
-/** 
-* 
-* Method: deleteUserDetail(int id) 
-* 
-*/ 
-@Test
-public void testDeleteUserDetail() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: updateUserDetail(UserDetail userDetail) 
-* 
-*/ 
-@Test
-public void testUpdateUserDetail() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: getAllUserDetail() 
-* 
-*/ 
-@Test
-public void testGetAllUserDetail() throws Exception { 
-//TODO: Test goes here... 
-} 
+///**
+//*
+//* Method: updateUserDetail(UserDetail userDetail)
+//*
+//*/
+//@Test
+//public void testUpdateUserDetail() throws Exception {
+////TODO: Test goes here...
+//}
+//
+///**
+//*
+//* Method: getAllUserDetail()
+//*
+//*/
+//@Test
+//public void testGetAllUserDetail() throws Exception {
+////TODO: Test goes here...
+//}
 
 
 } 

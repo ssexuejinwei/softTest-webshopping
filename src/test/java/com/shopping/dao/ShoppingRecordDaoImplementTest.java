@@ -267,36 +267,36 @@ public void testGetShoppingRecordsByOrderStatus() throws Exception {
     }
 
 } 
-
-/** 
-* 
-* Method: getUserProductRecord(int userId, int productId) 
-* 
-*/ 
-@Test
-public void testGetUserProductRecord() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: deleteShoppingRecordByUser(int userId) 
-* 
-*/ 
-@Test
-public void testDeleteShoppingRecordByUser() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: deleteShoppingRecordByProductId(int productId) 
-* 
-*/ 
-@Test
-public void testDeleteShoppingRecordByProductId() throws Exception { 
-//TODO: Test goes here... 
-} 
+//
+///**
+//*
+//* Method: getUserProductRecord(int userId, int productId)
+//*
+//*/
+//@Test
+//public void testGetUserProductRecord() throws Exception {
+////TODO: Test goes here...
+//}
+//
+///**
+//*
+//* Method: deleteShoppingRecordByUser(int userId)
+//*
+//*/
+//@Test
+//public void testDeleteShoppingRecordByUser() throws Exception {
+////TODO: Test goes here...
+//}
+//
+///**
+//*
+//* Method: deleteShoppingRecordByProductId(int productId)
+//*
+//*/
+//@Test
+//public void testDeleteShoppingRecordByProductId() throws Exception {
+////TODO: Test goes here...
+//}
 
 
 } 

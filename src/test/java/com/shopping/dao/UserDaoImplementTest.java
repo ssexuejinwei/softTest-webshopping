@@ -89,25 +89,25 @@ public void testGetUserId() throws Exception {
     }
 } 
 
-/** 
-* 
-* Method: getUser(String nameOrEmail) 
-* 
-*/ 
-@Test
-public void testGetUserNameOrEmail() throws Exception { 
-//TODO: Test goes here... 
-} 
+///**
+//*
+//* Method: getUser(String nameOrEmail)
+//*
+//*/
+//@Test
+//public void testGetUserNameOrEmail() throws Exception {
+////TODO: Test goes here...
+//}
 
-/** 
-* 
-* Method: addUser(User user) 
-* 
-*/ 
-@Test
-public void testAddUser() throws Exception { 
-//TODO: Test goes here... 
-} 
+///**
+//*
+//* Method: addUser(User user)
+//*
+//*/
+//@Test
+//public void testAddUser() throws Exception {
+////TODO: Test goes here...
+//}
 
 /** 
 * 
@@ -134,8 +134,15 @@ public void testDeleteUser() throws Exception {
 
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);//关闭烦人的hibernate日志输出
 //        String output = new GsonBuilder().disableHtmlEscaping().create().toJson(articleService.searchArticles(query));
+        try {
+            Boolean output = userDaoImplement.deleteUser(userId);
+        } catch (org.hibernate.exception.ConstraintViolationException e) {
+            System.out.print(testCase + "-" + (++i) + " failed\n");
+            System.out.println("org.hibernate.exception.ConstraintViolationException happend \n" );
+            passedList.add(false);
+            continue;
+        }
         Boolean output = userDaoImplement.deleteUser(userId);
-
         boolean ispassed = output.toString().equals(expect);
         if (ispassed) {
             System.out.print(testCase+"-"+(++i)+" passed\n" );
@@ -189,6 +196,14 @@ public void testUpdateUser() throws Exception {
         user.setRole(0);
         user.setId(userId);
         user.setName(name);
+        try {
+            Boolean output = userDaoImplement.updateUser(user);
+        } catch (org.hibernate.exception.ConstraintViolationException e) {
+            System.out.print(testCase + "-" + (++i) + " failed\n");
+            System.out.println("org.hibernate.exception.ConstraintViolationException happend \n" );
+            passedList.add(false);
+            continue;
+        }
 
         Boolean output = userDaoImplement.updateUser(user);
 
@@ -214,15 +229,15 @@ public void testUpdateUser() throws Exception {
     }
 } 
 
-/** 
-* 
-* Method: getAllUser() 
-* 
-*/ 
-@Test
-public void testGetAllUser() throws Exception { 
-//TODO: Test goes here... 
-} 
+///**
+//*
+//* Method: getAllUser()
+//*
+//*/
+//@Test
+//public void testGetAllUser() throws Exception {
+////TODO: Test goes here...
+//}
 
 
 } 
