@@ -3,9 +3,11 @@ package com.shopping.dao;
 import com.shopping.entity.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.springframework.core.ConstantException;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Repository
