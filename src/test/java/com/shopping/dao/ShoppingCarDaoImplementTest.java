@@ -117,7 +117,7 @@ public void testDeleteShoppingCar() throws Exception {
 public void testUpdateShoppingCar() throws Exception { 
 //TODO: Test goes here...
     String testCase = "UT_TC_005_002";
-    CsvReader csvReader = new CsvReader("src/testCase/UT/UT_TC_005_002.csv", ',', Charset.forName("GBK"));
+    CsvReader csvReader = new CsvReader("src/testCase/UT/UT_TC_005_002.csv", ',', Charset.forName("utf8"));
     csvReader.readHeaders();
     System.out.println("Test-function--updateShoppingCar");
     //用来存储是否通过测试的Boolean
@@ -138,7 +138,7 @@ public void testUpdateShoppingCar() throws Exception {
         ShoppingCar shoppingCar = new ShoppingCar();
         shoppingCar.setCounts(count);
         shoppingCar.setUserId(userId);
-        shoppingCar.setProductPrice(productId);
+        shoppingCar.setProductId(productId);
         shoppingCar.setProductPrice(price);
 
         Boolean output = shoppingCarDaoImplement.updateShoppingCar(shoppingCar);

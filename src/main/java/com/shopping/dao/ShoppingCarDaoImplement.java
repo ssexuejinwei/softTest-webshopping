@@ -39,7 +39,12 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
 
     @Override
     public boolean updateShoppingCar(ShoppingCar shoppingCar) {
+        if(shoppingCar.getProductPrice() <=0||shoppingCar.getCounts() <0){
+            return false;
+        }
+
         String hql = "update ShoppingCar set productPrice=?,counts=? where userId=? and productId=?";
+
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, shoppingCar.getProductPrice());
         query.setParameter(1, shoppingCar.getCounts());

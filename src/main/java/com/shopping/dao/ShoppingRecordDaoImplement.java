@@ -40,6 +40,13 @@ public class ShoppingRecordDaoImplement implements ShoppingRecordDao {
 
     @Override
     public boolean updateShoppingRecord(ShoppingRecord shoppingRecord) {
+        if(shoppingRecord.getOrderStatus() < 0||shoppingRecord.getCounts() < 0||shoppingRecord.getProductPrice() <= 0){
+            return false;
+        }
+        if(shoppingRecord.getOrderStatus() > 3){
+            //订单只有三种状态
+            return false;
+        }
         String hql = "update ShoppingReocrd set orderStatus=? where userId=? and productId=? and time=?";
         String sql = "update shopping_record set order_status=" + shoppingRecord.getOrderStatus() + " where user_id=" + shoppingRecord.getUserId() + " and product_id=" + shoppingRecord.getProductId() + " and time='" + shoppingRecord.getTime() + "'";
 //        Query query = sessionFactory.getCurrentSession().createQuery(hql);

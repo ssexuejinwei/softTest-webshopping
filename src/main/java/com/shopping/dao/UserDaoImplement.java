@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.validation.ConstraintViolationException;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -44,14 +45,31 @@ public class UserDaoImplement implements UserDao {
 
     @Override
     public boolean deleteUser(int id) {
-        String hql = "delete User where id=?";
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setParameter(0, id);
-        return query.executeUpdate() > 0;
+        String hql_1 = "delete Evaluation where userId=?";
+        String hql_2 = "delete ShoppingRecord where userId=?";
+        String hql_3 = "delete ShoppingCar where userId=?";
+        String hql_4 = "delete UserDetail where id=?";
+        String hql_5 = "delete User where id=?";
+        List<String> hql = Arrays.asList(hql_1,hql_2,hql_3,hql_4,hql_5);
+        boolean result = false;
+        for(int i = 0;i < hql.size();i++){
+            Query query = sessionFactory.getCurrentSession().createQuery(hql.get(i));
+            query.setParameter(0, id);
+            result = query.executeUpdate() > 0;
+//            System.out.print(i);
+        }
+        return result;
+//        String hql = "delete User where id=?";
+//        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+//        query.setParameter(0, id);
+//        return query.executeUpdate() > 0;
     }
 
     @Override
     public boolean updateUser(User user) {
+        if(user.getEmail().equals("")||user.getName().equals("")||user.getNickName().equals("")){
+            return false;
+        }
         String hql = "update User set name = ?,email=?,nickName=? where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, user.getName());
