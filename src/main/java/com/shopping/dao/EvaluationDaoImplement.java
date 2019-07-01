@@ -22,6 +22,9 @@ public class EvaluationDaoImplement implements EvaluationDao {
         query.setParameter(0, userId);
         query.setParameter(1, productId);
         query.setParameter(2, time);
+        if(query.uniqueResult() == null){
+            return new Evaluation();
+        }
         return (Evaluation) query.uniqueResult();
     }
 

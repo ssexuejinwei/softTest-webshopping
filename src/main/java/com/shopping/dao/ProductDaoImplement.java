@@ -18,9 +18,13 @@ public class ProductDaoImplement implements ProductDao {
 
     @Override
     public Product getProduct(int id) {
+
         String hql = "from Product where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
+        if(query.uniqueResult() == null){
+            return new Product();
+        }
         return (Product) query.uniqueResult();
     }
 
@@ -29,6 +33,9 @@ public class ProductDaoImplement implements ProductDao {
         String hql = "from Product where name=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, name);
+        if(query.uniqueResult()==null){
+            return new Product();
+        }
         return (Product) query.uniqueResult();
     }
 
@@ -66,6 +73,11 @@ public class ProductDaoImplement implements ProductDao {
         if(product.getPrice() < 0||product.getCounts() < 0 || product.getName().equals("") || product.getKeyWord().equals("")){
             return false;
         }
+//        String hql = "update Product set counts=? where id=?";
+//        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+//        query.setParameter(0, product.getCounts());
+//        query.setParameter(1, product.getId());
+//        return query.executeUpdate() > 0;
         String hql_1 = "update ShoppingCar set productPrice=? where productId=?";
         String hql_2= "update ShoppingRecord set productPrice=? where productId=?";
         String hql_3 = "update Product set name=?,description=?,keyWord=?,price=?,counts=?,type=? where id=?";

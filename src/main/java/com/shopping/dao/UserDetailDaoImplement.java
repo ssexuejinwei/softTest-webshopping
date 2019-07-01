@@ -16,9 +16,13 @@ public class UserDetailDaoImplement implements UserDetailDao {
 
     @Override
     public UserDetail getUserDetail(int id) {
+
         String hql = "from UserDetail where id=?";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, id);
+        if(query.uniqueResult() == null){
+            return new UserDetail();
+        }
         return (UserDetail) query.uniqueResult();
     }
 

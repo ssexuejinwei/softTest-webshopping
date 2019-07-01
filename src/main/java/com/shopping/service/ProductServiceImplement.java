@@ -41,15 +41,21 @@ public class ProductServiceImplement implements ProductService {
     @Override
     @Transactional
     public Response deleteProduct(int id) {
-        try {
-            evaluationDao.deleteEvaluationByProduct(id);
-            shoppingCarDao.deleteShoppingCarByProduct(id);
-            shoppingRecordDao.deleteShoppingRecordByProductId(id);
-            productDao.deleteProduct(id);
-            return new Response(1, "删除商品成功", null);
-        } catch (Exception e) {
-            return new Response(0, "删除商品失败", null);
+       if(productDao.deleteProduct(id)) {
+           return new Response(1, "删除商品成功", null);
+       }
+       else{
+           return new Response(0, "删除商品失败", null);
         }
+//        try {
+//            evaluationDao.deleteEvaluationByProduct(id);
+//            shoppingCarDao.deleteShoppingCarByProduct(id);
+//            shoppingRecordDao.deleteShoppingRecordByProductId(id);
+//            productDao.deleteProduct(id);
+//            return new Response(1, "删除商品成功", null);
+//        } catch (Exception e) {
+//            return new Response(0, "删除商品失败", null);
+//        }
     }
 
     @Override

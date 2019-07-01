@@ -1,5 +1,6 @@
 package com.shopping.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.csvreader.CsvReader;
 import com.shopping.controller.UserController;
@@ -332,7 +333,7 @@ public class UserControllerTest {
             java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);//关闭烦人的hibernate日志输出
 //        output = JSON.toJSONString(output);
 //            String output = JSONArray.toJSONString(productDaoImplement.getProduct(productId));
-            String output = userController.getUserAddressAndPhoneNumber(userId).get("result").toString();
+            String output = JSON.toJSONString(userController.getUserAddressAndPhoneNumber(userId));
 
             boolean ispassed = output.equals(expect);
             if (ispassed) {

@@ -1,5 +1,6 @@
 package com.shopping.dao;
 
+import com.shopping.entity.Product;
 import com.shopping.entity.ShoppingCar;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -20,6 +21,9 @@ public class ShoppingCarDaoImplement implements ShoppingCarDao {
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter(0, userId);
         query.setParameter(1, productId);
+        if(query.uniqueResult()==null){
+            return new ShoppingCar();
+        }
         return (ShoppingCar) query.uniqueResult();
     }
 

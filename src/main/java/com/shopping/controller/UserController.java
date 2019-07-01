@@ -7,6 +7,7 @@ import com.shopping.entity.UserDetail;
 import com.shopping.service.UserDetailService;
 import com.shopping.service.UserService;
 import com.shopping.utils.Response;
+import com.shopping.utils.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -82,20 +83,68 @@ public class UserController {
 
         String result = "fail";
         User user = userService.getUser(userName);
-        if (user != null) {
+        //判断邮编是否合法
+        if(!StringHelper.isPostCode(postNumber)){
+            result = "PostCode input error";
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", result);
+            return resultMap;
+        }
+        //判断生日是否合法
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        String year_str = birthday.split("/")[0].trim();
+        if(Integer.parseInt(year_str) > year){
+            result = "birthday input error";
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", result);
+            return resultMap;
+        }
+        //判断密码是否合法
+        for( int i =0; i < password.length();i++){
+            if(!Character.isLetterOrDigit(password.charAt(i))){
+                result = "password only can be word or digital";
+                Map<String, Object> resultMap = new HashMap<String, Object>();
+                resultMap.put("result", result);
+                return resultMap;
+            }
+        }
+        //判断手机号是否合法
+        if(!StringHelper.isPhoneNum(phoneNumber)){
+            result = "phoneNumber input error";
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", result);
+            return resultMap;
+        }
+        //判断邮箱是否合法
+        if(!StringHelper.isEmail(email)){
+            result = "Email input error";
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", result);
+            return resultMap;
+        }
+        //判断用户名是否合法
+        if(userName.equals("")){
+            result = "userName can not be null";
+        }else if(email.equals("")){
+            result = "email can not be null";
+        }
+
+        else if (user != null) {
             result = "nameExist";
-        } else {
+        }
+        else {
             user = userService.getUser(email);
             if (user != null)
                 result = "emailExist";
             else {
                 User user1 = new User();
                 user1.setName(userName);
-                System.out.println(userName);
+//                System.out.println(userName);
                 user1.setEmail(email);
-                System.out.println(email);
+//                System.out.println(email);
                 user1.setNickName(nickName);
-                System.out.println(nickName);
+//                System.out.println(nickName);
                 user1.setRole(0);
                 userService.addUser(user1);
                 user1 = userService.getUser(userName);
@@ -164,6 +213,12 @@ public class UserController {
     @RequestMapping(value = "/getUserAddressAndPhoneNumber", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> getUserAddressAndPhoneNumber(int id) {
+        if(id <= 0){
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("address", null);
+            resultMap.put("phoneNumber", null);
+            return resultMap;
+        }
         String address = userDetailService.getUserDetail(id).getAddress();
         String phoneNumber = userDetailService.getUserDetail(id).getPhoneNumber();
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -192,6 +247,11 @@ public class UserController {
     @ResponseBody
     public Map<String, Object> getUserDetailById(int id) {
         UserDetail userDetail = userDetailService.getUserDetail(id);
+        if(userDetail.getPassword() == null){
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", "null");
+            return resultMap;
+        }
         String result = JSON.toJSONString(userDetail);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("result", result);

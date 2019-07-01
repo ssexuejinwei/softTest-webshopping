@@ -6,8 +6,10 @@ import com.shopping.entity.Product;
 import com.shopping.entity.User;
 import com.shopping.service.ProductService;
 import com.shopping.utils.Response;
+import com.shopping.utils.StringHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,6 +61,17 @@ public class ProductController {
         product.setPrice(price);
         product.setCounts(counts);
         product.setType(type);
+        if(product.getPrice() <= 0||product.getCounts() < 0 || product.getName().equals("") ||
+                product.getKeyWord().equals("")||product.getDescription().equals("")||product.getType()<=0){
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", result);
+            return resultMap;
+        }
+        if(StringHelper.isNum(product.getName())){
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", result);
+            return resultMap;
+        }
         productService.addProduct(product);
         result = "success";
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -71,6 +84,11 @@ public class ProductController {
     public Map<String, Object> productDetail(int id, HttpSession httpSession) {
 //        System.out.println("I am here!" + id);
         Product product = productService.getProduct(id);
+        if(product.getName() == null){
+            Map<String, Object> resultMap = new HashMap<String, Object>();
+            resultMap.put("result", "fail");
+            return resultMap;
+        }
         httpSession.setAttribute("productDetail", product);
 //        System.out.print("I am here" + product.getName());
         Map<String, Object> resultMap = new HashMap<String, Object>();

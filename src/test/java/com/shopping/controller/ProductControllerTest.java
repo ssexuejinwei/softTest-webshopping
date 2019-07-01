@@ -127,8 +127,7 @@ public class ProductControllerTest {
             String expect = csvReader.get(6).toLowerCase();
 
             java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);//关闭烦人的hibernate日志输出
-
-            String output = productController.addProduct(name,description,keyword,type,price,counts).get("result").toString();
+            String output = productController.addProduct(name,description,keyword,price,counts,type).get("result").toString();
             if(output.equals("success")){
                 output = "true";
             }
@@ -159,8 +158,8 @@ public class ProductControllerTest {
     @Test
     public void testProductDetail() throws Exception {
 //TODO: Test goes here...
-        String testCase = "IT_TD_002_004";
-        CsvReader csvReader = new CsvReader("src/testCase/IT/IT_TD_002_004.csv", ',', Charset.forName("utf8"));
+        String testCase = "IT_TD_002_003";
+        CsvReader csvReader = new CsvReader("src/testCase/IT/IT_TD_002_003.csv", ',', Charset.forName("utf8"));
         csvReader.readHeaders();
         System.out.println("Test-interface--productDetail");
         //用来存储是否通过测试的Boolean
@@ -170,7 +169,7 @@ public class ProductControllerTest {
         while (csvReader.readRecord()) {
             //每列元素的
             int productId = Integer.parseInt(csvReader.get(0));
-            String expect = csvReader.get(1);
+            String expect = csvReader.get(1).toLowerCase();
 
             java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);//关闭烦人的hibernate日志输出
             HttpSession httpSession = new HttpSession() {
@@ -315,8 +314,8 @@ public class ProductControllerTest {
     @Test
     public void testSearchProduct() throws Exception {
 //TODO: Test goes here...
-        String testCase = "IT_TD_002_003";
-        CsvReader csvReader = new CsvReader("src/testCase/IT/IT_TD_002_003.csv", ',', Charset.forName("utf8"));
+        String testCase = "IT_TD_002_004";
+        CsvReader csvReader = new CsvReader("src/testCase/IT/IT_TD_002_004.csv", ',', Charset.forName("utf8"));
         csvReader.readHeaders();
         System.out.println("Test-interface--searchPre");
         //用来存储是否通过测试的Boolean
