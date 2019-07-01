@@ -1,8 +1,8 @@
 ﻿id,result
--9999,null
--1,null
-0,null
-1,null
-1000,null
+-9999,"{""id"":0,""role"":0}"
+-1,"{""id"":0,""role"":0}"
+0,"{""id"":0,""role"":0}"
+1,"{""id"":0,""role"":0}"
+1000,"{""id"":0,""role"":0}"
 2,"{""email"":""123456@qq.com"",""id"":2,""name"":""admin"",""nickName"":""xue666"",""role"":1}"
 8,"{""email"":""435452@qq.com"",""id"":8,""name"":""Yuan"",""nickName"":""Yuan"",""role"":0}"
